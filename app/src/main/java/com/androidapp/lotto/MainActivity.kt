@@ -18,14 +18,14 @@ fun getRandomLottoNumbers(): MutableList<Int> {
 
             if(lottoNumbers.contains(number)) {
 //                flag_existing = 1
-                continue
+//                continue
             }
 
-/*        if (flag_existing.equals(1))
-            continue
-        else*/
+//        if (flag_existing.equals(1))
+//            continue
+//        else
             lottoNumbers.add(number)
-        if(lottoNumbers.size >= 0)
+        if(lottoNumbers.size >= 6)
             break;
     }
     return lottoNumbers
