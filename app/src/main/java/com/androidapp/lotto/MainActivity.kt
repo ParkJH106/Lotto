@@ -30,7 +30,16 @@ fun getRandomLottoNumbers(): MutableList<Int> {
     }
     return lottoNumbers
 }
+fun getShuffledLottoNumbers () : MutableList<Int> {
+    val list = mutableListOf<Int>()
 
+    for(number in 1..45) {
+        list.add(number)
+    }
+    list.shuffle()
+
+    return list.subList(0, 6)
+}
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

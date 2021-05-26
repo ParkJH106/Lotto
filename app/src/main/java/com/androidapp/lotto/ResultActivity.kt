@@ -21,7 +21,8 @@ class ResultActivity : AppCompatActivity() {
         //println("result_sorted is" + result_sorted)
 
         result?.let {
-            updateLottoBallImage(result.sortedBy { it }) }
+            updateLottoBallImage(result.sortedBy { it })
+        }
 
         // 3) set images
 /*        val lottoBallImageStartId = R.drawable.ball_01
