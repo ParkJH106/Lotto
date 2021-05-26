@@ -4,6 +4,32 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
+import java.util.*
+
+fun getRandomLottoNumber() : Int {
+    return Random().nextInt(45)+1
+}
+fun getRandomLottoNumbers(): MutableList<Int> {
+    val lottoNumbers = mutableListOf<Int>()
+
+    while(true) {
+        var number: Int = getRandomLottoNumber()
+        var flag_existing: Int = 0
+
+            if(lottoNumbers.contains(number)) {
+//                flag_existing = 1
+                continue
+            }
+
+/*        if (flag_existing.equals(1))
+            continue
+        else*/
+            lottoNumbers.add(number)
+        if(lottoNumbers.size >= 0)
+            break;
+    }
+    return lottoNumbers
+}
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,9 +41,10 @@ class MainActivity : AppCompatActivity() {
         val cardView_name = findViewById<CardView>(R.id.cardView_name)
 
         cardView_random.setOnClickListener{
-            startActivity(Intent(this@MainActivity, ResultActivity::class.java))
+            val intent = Intent (this, ResultActivity::class.java)
+            intent.putIntegerArrayListExtra("result", ArrayList(getRandomLottoNumber()))
+            startActivity(intent)
         }
-
         cardView_constellation.setOnClickListener{
                 startActivity(Intent(this@MainActivity, ConstellationActivity::class.java))
         }
