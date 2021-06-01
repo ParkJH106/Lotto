@@ -42,7 +42,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal|top"
-                    android:text="랜덤 숫자 생성" />
+                    android:text="@string/comment"
+                    />
             </LinearLayout>
 
             <ImageView
