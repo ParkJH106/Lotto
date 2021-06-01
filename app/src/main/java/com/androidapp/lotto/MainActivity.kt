@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.cardview.widget.CardView
+import java.text.SimpleDateFormat
 import java.util.*
 
 fun getRandomLottoNumber() : Int {
@@ -12,7 +13,7 @@ fun getRandomLottoNumber() : Int {
 fun getRandomLottoNumbers(): MutableList<Int> {
     val lottoNumbers = mutableListOf<Int>()
 
-    while(true) {
+   /* while(true) {
         var number: Int = getRandomLottoNumber()
         var flag_existing: Int = 0
 
@@ -27,6 +28,14 @@ fun getRandomLottoNumbers(): MutableList<Int> {
             lottoNumbers.add(number)
         if(lottoNumbers.size >= 6)
             break;
+    }*/
+
+    for(i in 1..6) {
+        var number = 0
+        do {
+            number = getRandomLottoNumber()
+        } while (lottoNumbers.contains(number))
+        lottoNumbers.add(number)
     }
     return lottoNumbers
 }
@@ -40,6 +49,7 @@ fun getShuffledLottoNumbers () : MutableList<Int> {
 
     return list.subList(0, 6)
 }
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
