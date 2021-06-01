@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,13 +26,9 @@ class ResultActivity : AppCompatActivity() {
         //val result_sorted = result?.sorted()
         //println("result_sorted is" + result_sorted)
 
-        result?.let {
-            updateLottoBallImage(result.sortedBy { it })
-        }
-
         // 3) update text and image
         strConstellation?.let {
-            val resultLabel = findViewById<Button>(R.id.resultLabel)
+            val resultLabel = findViewById<TextView>(R.id.resultLabel)
             resultLabel.text = "${strConstellation}의 ${SimpleDateFormat("yyyy년 MM월 dd일").format(Date())} 로또입니다."
         }
         result?.let{

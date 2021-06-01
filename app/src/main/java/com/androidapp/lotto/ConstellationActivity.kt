@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CalendarView
 import android.widget.DatePicker
 import android.widget.TextView
 import java.text.SimpleDateFormat
@@ -29,8 +30,21 @@ class ConstellationActivity : AppCompatActivity() {
 
         val datePicker = findViewById<DatePicker>(R.id.datePicker)
         val txtConstell = findViewById<TextView>(R.id.txtConstell)
+        val calendar = Calendar.getInstance()
 
         txtConstell.text = makeConstellationString(datePicker.month, datePicker.dayOfMonth)
+        datePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+        object : CalendarView.OnDateChangeListener, DatePicker.OnDateChangedListener{
+            override fun onSelectedDayChange(view: CalendarView, year: Int, month: Int, dayOfMonth: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onDateChanged(view: DatePicker?, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+                txtConstell.text = makeConstellationString(datePicker.month, datePicker.dayOfMonth)
+            }
+
+        }
+        )
 
         btnGoResultConstell.setOnClickListener{
             val intent = Intent(this, ResultActivity::class.java)
